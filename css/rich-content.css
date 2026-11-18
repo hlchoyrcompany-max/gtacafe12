@@ -1,0 +1,35 @@
+@import url("https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700;800&display=swap");
+
+/* Keep article photos against the left edge, including previously centered photos. */
+.rich-editor img,.post-body img,.post-body .content-block.image img{display:block!important;margin-left:0!important;margin-right:auto!important;float:none!important;max-width:100%;height:auto}
+
+/* Shared article/editor quotation styles. */
+:where(.rich-editor,.post-body) blockquote.quote-large{position:relative;display:block;border:0;background:transparent;text-align:center;margin:56px 0;padding:48px 20px;color:#333;font-size:21px;line-height:1.8;font-family:Georgia,"Batang",serif;font-style:italic;white-space:pre-wrap}
+:where(.rich-editor,.post-body) blockquote.quote-large::before,:where(.rich-editor,.post-body) blockquote.quote-large::after{display:block;position:absolute;left:0;right:0;color:#c5c5c5;font-family:Georgia,serif;font-size:48px;line-height:1;font-weight:bold;font-style:normal}
+:where(.rich-editor,.post-body) blockquote.quote-large::before{content:"“";top:0}:where(.rich-editor,.post-body) blockquote.quote-large::after{content:"”";bottom:0}
+:where(.rich-editor,.post-body) blockquote.quote-line{border:0;border-left:3px solid #555;padding:8px 20px;margin:32px 0;background:transparent}
+:where(.rich-editor,.post-body) blockquote.quote-box{border:1px solid #e1e3e5;background:#f7f8f9;border-radius:4px;padding:24px;margin:32px 0}
+:where(.rich-editor,.post-body) .quote-text{margin:0!important;white-space:pre-wrap}:where(.rich-editor,.post-body) cite.quote-source{display:block;margin-top:16px;font-family:"Malgun Gothic",sans-serif;font-size:12px;font-style:normal;color:#888}
+
+/* Enter creates one ordinary line; paragraph gaps are explicit blank lines. */
+.rich-editor,.post-body .content-block.rich-document{font-size:18px;line-height:1.6;letter-spacing:-0.5px;word-spacing:-0.5px;white-space:pre-wrap}
+.rich-editor p,.rich-editor div,.post-body .rich-document p,.post-body .rich-document div{margin-top:0!important;margin-bottom:0!important;line-height:inherit}
+.rich-editor p:empty,.rich-editor div:empty,.post-body .rich-document p:empty,.post-body .rich-document div:empty{min-height:1.6em}
+
+.rich-editor blockquote.quote-large,.post-body blockquote.quote-large{font-family:"Nanum Myeongjo","Batang",serif;font-size:21px;font-style:italic;font-weight:400;letter-spacing:-0.5px;word-spacing:-0.5px;line-height:1.6}
+:where(.rich-editor,.rich-document) u,:where(.rich-editor,.rich-document) [style*="text-decoration"]{text-decoration:none!important}
+:where(.rich-editor,.rich-document) .underline-run{ text-decoration-line:underline!important;text-decoration-color:currentColor!important;text-underline-offset:3px;text-decoration-thickness:1px}
+.rich-editor a:not(.link-card),.post-body .rich-document a:not(.link-card){color:#568fc1;text-decoration:underline;text-decoration-color:currentColor}
+.rich-editor a.link-card,.post-body a.link-card{display:flex;align-items:stretch;border:1px solid #e2e2e2;box-shadow:0 2px 5px #00000012;background:white;color:#111;text-decoration:none!important;width:100%;max-width:620px;margin:24px 0;white-space:normal;font-family:"Malgun Gothic",sans-serif;font-style:normal;font-weight:400;line-height:1.5;overflow:hidden}
+.link-card .link-card-icon{display:flex;flex:0 0 100px;align-items:center;justify-content:center;background:#03c75a;color:#fff;font-family:Arial,sans-serif;font-size:46px;font-weight:900}
+.link-card .link-card-copy{display:flex;flex:1;min-width:0;flex-direction:column;justify-content:center;padding:16px 20px;gap:2px}.link-card .link-card-title{font-size:17px;font-weight:700;color:#111}.link-card .link-card-description{font-size:14px;color:#444}.link-card .link-card-domain{font-size:13px;color:#03a94d;overflow-wrap:anywhere}.link-card:hover{border-color:#aaa}
+@media(max-width:480px){.link-card .link-card-icon{flex-basis:72px;font-size:34px}.link-card .link-card-copy{padding:12px}.rich-editor blockquote.quote-large,.post-body blockquote.quote-large{font-size:21px}}
+
+.rich-editor .quote-large .quote-text,.post-body .quote-large .quote-text{font-weight:400;letter-spacing:-0.5px;word-spacing:-0.5px;line-height:1.6}.rich-editor .quote-large b,.rich-editor .quote-large strong,.post-body .quote-large b,.post-body .quote-large strong{font-weight:700}
+
+.rich-editor p,.post-body .rich-document p{font-size:inherit;letter-spacing:inherit;word-spacing:inherit}
+
+.rich-editor a.link-card.product-card,.post-body a.link-card.product-card{display:flex;flex-direction:column;max-width:400px;border-radius:0;overflow:hidden;box-shadow:0 1px 4px #00000018;letter-spacing:0;word-spacing:0;text-align:left}
+.rich-editor .product-card>img,.post-body .product-card>img{display:block;width:100%;height:auto;aspect-ratio:5/3;object-fit:cover;background:#f7f7f7;margin:0!important;border-radius:0}
+.product-card .link-card-copy{padding:12px 14px;gap:6px}.product-card .link-card-title{font-size:16px;line-height:1.45}.product-card .link-card-description{font-size:13px;line-height:1.6;display:block;white-space:nowrap;text-overflow:ellipsis;overflow:hidden}.product-card .link-card-domain{font-size:12px;line-height:1.5}
+@media(max-width:480px){.product-card .link-card-copy{padding:10px 12px}.product-card .link-card-title{font-size:15px}.product-card .link-card-description{font-size:12px}.rich-editor .product-card>img,.post-body .product-card>img{height:auto;aspect-ratio:5/3}}
