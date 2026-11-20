@@ -21,44 +21,23 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
-      - name: Check out cafe
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
         with:
-          path: cafe-source
-          persist-credentials: false
-      - name: Check out blog
-        uses: actions/checkout@v4
-        with:
-          repository: hlchoyrcompany-max/sweetlatte1118
-          ref: main
-          path: blog-source
           persist-credentials: false
       - name: Assemble cafe and blog
         shell: bash
         run: |
           set -euo pipefail
           mkdir -p _site/cafe _site/blog
-          cafe_files=(index.html board.html post.html blog-data.js assets css js JL3jZVy984sIQ2127drz)
-          blog_files=(index.html board.html post.html blog-data.js assets css js JL3jZVy984sIQ2127drz)
-          git -C cafe-source archive HEAD "${cafe_files[@]}" | tar -x -C _site/cafe
-          git -C blog-source archive HEAD "${blog_files[@]}" | tar -x -C _site/blog
-          # Preserve existing root-level article, board and asset URLs.
+          public_files=(index.html board.html post.html blog-data.js assets css js JL3jZVy984sIQ2127drz)
+          for site in cafe blog; do
+            for file in "${public_files[@]}"; do
+              cp -a "$site/$file" "_site/$site/"
+            done
+          done
+          # Preserve previously shared root-level article and asset URLs.
           cp -a _site/cafe/. _site/
-          cat > _site/index.html <<'HTML'
-          <!doctype html>
-          <html lang="ko">
-          <head>
-            <meta charset="utf-8">
-            <meta name="viewport" content="width=device-width, initial-scale=1">
-            <title>위식도역류질환 온라인 커뮤니티</title>
-          </head>
-          <body>
-            <a href="./cafe/">카페 홈 열기</a>
-            <a href="./blog/">블로그 홈 열기</a>
-            <script>location.replace("./cafe/" + location.search + location.hash);</script>
-          </body>
-          </html>
-          HTML
+          cp index.html _site/index.html
       - uses: actions/configure-pages@v5
         with:
           enablement: true
