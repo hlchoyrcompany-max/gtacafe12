@@ -172,3 +172,29 @@
     opacity: 1;
   }
 }
+
+.home-mobile-comments { display: none; }
+
+@media (max-width: 767px) {
+  .cafe-mobile-home .home-board tbody tr:has(.home-mobile-comments) {
+    position: relative;
+    padding-right: 68px;
+  }
+  .home-mobile-comments {
+    display: grid;
+    place-content: center;
+    gap: 2px;
+    position: absolute;
+    right: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 42px;
+    min-height: 53px;
+    border-radius: 12px;
+    background: #f4f5f6;
+    color: #667069;
+    text-align: center;
+    font-size: 10px;
+  }
+  .home-mobile-comments strong { color: #242824; font-size: 14px; }
+}
