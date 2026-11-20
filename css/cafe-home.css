@@ -88,3 +88,18 @@
     background: #fff;
   }
 }
+
+.home-example-note { margin: 12px 0; color: #536258; line-height: 1.5; }
+.home-pagination { display: flex; flex-wrap: wrap; justify-content: center; gap: 4px; margin: 16px 0; }
+.home-pagination a { padding: 7px 9px; border: 1px solid #e3e8e2; border-radius: 4px; }
+.home-pagination a[aria-current='page'] { background: #245239; border-color: #245239; color: #fff; }
+.home-example h2 { margin: 16px 0 10px; }
+#example-meta { color: #536258; font-size: 13px; }
+#example-body { margin: 24px 0; line-height: 1.8; }
+#example-back { color: #245239; text-decoration: underline; }
+@media (max-width: 767px) {
+  .cafe-mobile-home .cafe-banner { display: none; }
+  .cafe-mobile-home .cafe-mobile-drawer .cafe-quick a > span:nth-child(2) { display: none; }
+  .cafe-mobile-home .home-board td, .cafe-mobile-home .home-board th { font-size: 12px; }
+  .cafe-mobile-home .home-board td:first-child { font-size: 14px; }
+}

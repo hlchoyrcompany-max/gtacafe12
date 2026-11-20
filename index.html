@@ -10,7 +10,7 @@
   <link rel="stylesheet" href="css/blog.css">
   <link rel="stylesheet" href="css/brand.css?v=20261118-small-heart">
   <link rel="stylesheet" href="css/cafe.css?v=6">
-  <link rel="stylesheet" href="css/cafe-home.css?v=3">
+  <link rel="stylesheet" href="css/cafe-home.css?v=4">
 </head>
 <body class="cafe-mobile-home">
 <a class="skip-link" href="#home">본문 바로가기</a>
@@ -22,7 +22,7 @@
   <a class="cafe-banner" href="?#top" aria-label="카페 홈"></a>
   <div class="cafe-mobile-profile">
     <img src="assets/images/reflux-notebook-profile.png" width="55" height="55" alt="">
-    <div><strong>편안한 하루</strong><p class="cafe-mobile-counts">113,049명 · 전체 글 298,387개</p></div>
+    <div><strong>편안한 하루</strong><p class="cafe-mobile-counts">113,049명</p></div>
   </div>
   <div class="cafe-layout">
     <aside class="cafe-sidebar">
@@ -64,26 +64,34 @@
       <section class="home-board" id="latest" aria-labelledby="board-title">
         <div class="home-board-heading">
           <h2 id="board-title">전체글보기</h2>
-          <a id="board-link" href="board.html">게시판 열기</a>
+
         </div>
+        <p class="home-example-note">예시 게시판입니다. 글과 활동 수치는 화면 확인용으로 만든 예시입니다.</p>
         <table aria-labelledby="board-title">
-          <thead><tr><th scope="col">제목</th><th scope="col">작성자</th><th scope="col">작성일</th></tr></thead>
-          <tbody id="home-rows"><tr><td class="home-empty" colspan="3">게시글을 불러오는 중입니다.</td></tr></tbody>
+          <thead><tr><th scope="col">제목</th><th scope="col">작성자</th><th scope="col">작성일</th><th scope="col">조회</th><th scope="col">좋아요</th></tr></thead>
+          <tbody id="home-rows"><tr><td class="home-empty" colspan="5">게시글을 불러오는 중입니다.</td></tr></tbody>
         </table>
-        <button class="home-board-more" id="home-more" type="button" hidden>글 더 보기</button>
+        <nav class="home-pagination" id="home-pagination" aria-label="게시판 페이지" hidden></nav>
         <form class="home-board-search" id="home-search" role="search">
           <label class="skip-link" for="home-query">게시글 검색</label>
           <input id="home-query" type="search" placeholder="게시글 검색">
           <button type="submit">검색</button>
         </form>
       </section>
+      <article class="home-board home-example" id="home-example" hidden>
+        <p class="home-example-note">예시 게시글입니다. 작성자와 활동 수치는 예시입니다.</p>
+        <h2 id="example-title"></h2>
+        <p id="example-meta"></p>
+        <p id="example-body"></p>
+        <a id="example-back" href="#latest">목록으로</a>
+      </article>
     </main>
   </div>
 </div>
 <noscript><p>게시글 목록을 보려면 JavaScript를 켜 주세요.</p></noscript>
-<script src="blog-data.js?v=20261118-product-card"></script>
+<script src="js/cafe-example-posts.js"></script>
 <script src="js/blog-core.js?v=20261118-clean"></script>
-<script src="js/cafe-home.js?v=3"></script>
+<script src="js/cafe-home.js?v=4"></script>
 <dialog class="cafe-mobile-drawer" id="cafe-mobile-drawer" aria-labelledby="cafe-mobile-drawer-title">
   <div class="cafe-mobile-drawer-heading">
     <h2 id="cafe-mobile-drawer-title">게시판 메뉴</h2>
