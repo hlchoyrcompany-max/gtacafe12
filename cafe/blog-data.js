@@ -15,7 +15,7 @@ window.BLOG_DATA = {
       "description": "위염과 역류성식도염 관리에 관해 정리한 기록입니다.",
       "date": "2026.10.29",
       "viewCount": 874000,
-      "landingUrl": "https://cafe-never.com/C8fR2mQ7nL4xT9sV6kDz/",
+      "landingUrl": "https://cafe-never.com/cafe/C8fR2mQ7nL4xT9sV6kDz/",
       "ga4Id": "",
       "category": "자유게시판",
       "tags": [],

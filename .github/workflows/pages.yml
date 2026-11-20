@@ -38,6 +38,9 @@ jobs:
           cp -a "cafe/C8fR2mQ7nL4xT9sV6kDz" _site/cafe/
           # Preserve previously shared root-level article and asset URLs.
           cp -a _site/cafe/. _site/
+          for slug in JL3jZVy984sIQ2127drz C8fR2mQ7nL4xT9sV6kDz; do
+            sed 's|../C8fR2mQ7nL4xT9sV6kDz/|../cafe/C8fR2mQ7nL4xT9sV6kDz/|g'               "_site/cafe/JL3jZVy984sIQ2127drz/index.html" > "_site/$slug/index.html"
+          done
           cp index.html _site/index.html
       - uses: actions/configure-pages@v5
         with:
