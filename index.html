@@ -9,13 +9,21 @@
   <link rel="stylesheet" href="css/main.css">
   <link rel="stylesheet" href="css/blog.css">
   <link rel="stylesheet" href="css/brand.css?v=20261118-small-heart">
-  <link rel="stylesheet" href="css/cafe.css?v=4">
-  <link rel="stylesheet" href="css/cafe-home.css">
+  <link rel="stylesheet" href="css/cafe.css?v=5">
+  <link rel="stylesheet" href="css/cafe-home.css?v=2">
 </head>
-<body>
+<body class="cafe-mobile-home">
 <a class="skip-link" href="#home">본문 바로가기</a>
 <div class="cafe-shell" id="top">
+  <header class="cafe-mobile-bar">
+    <a class="cafe-mobile-title" href="index.html">편안한 하루</a>
+    <button class="cafe-mobile-menu" type="button" aria-label="게시판 메뉴 열기" aria-haspopup="dialog" aria-controls="cafe-mobile-drawer"><span aria-hidden="true"></span></button>
+  </header>
   <a class="cafe-banner" href="?#top" aria-label="카페 홈"></a>
+  <div class="cafe-mobile-profile">
+    <img src="assets/images/reflux-notebook-profile.png" width="55" height="55" alt="">
+    <strong>편안한 하루</strong>
+  </div>
   <div class="cafe-layout">
     <aside class="cafe-sidebar">
       <div class="cafe-side-tabs">
@@ -63,10 +71,11 @@
     </aside>
     <main class="cafe-home" id="home">
       <nav class="mobile-home-nav" aria-label="카페 게시판">
-        <a href="?board=%EC%A0%84%EC%B2%B4%EA%B8%80#latest">전체글</a>
-        <a href="?board=%EC%9D%B8%EA%B8%B0%EA%B8%80#latest">인기글</a>
-        <a href="?board=%EA%B3%B5%EC%A7%80#latest">공지사항</a>
-        <a href="?board=%EC%9E%90%EC%9C%A0%EA%B2%8C%EC%8B%9C%ED%8C%90#latest">자유 게시판</a>
+        <a href="index.html" data-board="">홈</a>
+        <a href="?board=%EC%A0%84%EC%B2%B4%EA%B8%80#latest" data-board="전체글">전체글</a>
+        <a href="?board=%EC%9D%B8%EA%B8%B0%EA%B8%80#latest" data-board="인기글">인기글</a>
+        <a href="?board=%EA%B3%B5%EC%A7%80#latest" data-board="공지">공지사항</a>
+        <a href="?board=%EC%9E%90%EC%9C%A0%EA%B2%8C%EC%8B%9C%ED%8C%90#latest" data-board="자유게시판">자유 게시판</a>
       </nav>
       <section class="cafe-intro" aria-labelledby="home-title">
         <img src="assets/images/reflux-notebook-profile.png" width="82" height="82" alt="">
@@ -97,6 +106,14 @@
 <noscript><p>게시글 목록을 보려면 JavaScript를 켜 주세요.</p></noscript>
 <script src="blog-data.js?v=20261118-product-card"></script>
 <script src="js/blog-core.js?v=20261118-clean"></script>
-<script src="js/cafe-home.js"></script>
+<script src="js/cafe-home.js?v=2"></script>
+<dialog class="cafe-mobile-drawer" id="cafe-mobile-drawer" aria-labelledby="cafe-mobile-drawer-title">
+  <div class="cafe-mobile-drawer-heading">
+    <h2 id="cafe-mobile-drawer-title">게시판 메뉴</h2>
+    <form method="dialog"><button type="submit" aria-label="메뉴 닫기">×</button></form>
+  </div>
+  <div class="cafe-mobile-drawer-links"></div>
+</dialog>
+<script src="js/cafe-mobile.js"></script>
 </body>
 </html>

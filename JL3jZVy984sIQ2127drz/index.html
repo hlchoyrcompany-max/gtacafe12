@@ -14,10 +14,15 @@
 <link href="css/main.css" rel="stylesheet"/>
 <link href="css/blog.css" rel="stylesheet"/>
 <link href="css/brand.css?v=20261118-small-heart" rel="stylesheet"/>
-<link rel="stylesheet" href="css/rich-content.css?v=20261118-product-simple"/><link rel="stylesheet" href="css/cafe.css?v=4"/></head>
-<body>
+<link rel="stylesheet" href="css/rich-content.css?v=20261118-product-simple"/><link rel="stylesheet" href="css/cafe.css?v=5"/></head>
+<body class="cafe-mobile-article">
 <a class="skip-link" href="JL3jZVy984sIQ2127drz/#article">본문 바로가기</a>
 <div class="cafe-shell" id="top">
+  <header class="cafe-mobile-bar">
+    <a class="cafe-mobile-back" href="index.html" aria-label="카페 홈으로"></a>
+    <a class="cafe-mobile-title" href="index.html">편안한 하루</a>
+    <button class="cafe-mobile-menu" type="button" aria-label="게시판 메뉴 열기" aria-haspopup="dialog" aria-controls="cafe-mobile-drawer"><span aria-hidden="true"></span></button>
+  </header>
   <a class="cafe-banner" href="index.html" aria-label="카페 홈"></a>
   <div class="cafe-layout">
     <aside class="cafe-sidebar">
@@ -94,6 +99,14 @@
 <div aria-live="polite" class="toast" hidden="" id="toast" role="status"></div>
 <noscript><p>본문을 보려면 JavaScript를 켜 주세요.</p></noscript>
 <script src="blog-data.js?v=20261118-product-card"></script><script src="js/core.js"></script><script src="js/blog-core.js?v=20261118-clean"></script><script src="js/rich-content.js?v=20261118-product-card"></script><script src="js/app.js?v=20261118-topics"></script>
+<dialog class="cafe-mobile-drawer" id="cafe-mobile-drawer" aria-labelledby="cafe-mobile-drawer-title">
+  <div class="cafe-mobile-drawer-heading">
+    <h2 id="cafe-mobile-drawer-title">게시판 메뉴</h2>
+    <form method="dialog"><button type="submit" aria-label="메뉴 닫기">×</button></form>
+  </div>
+  <div class="cafe-mobile-drawer-links"></div>
+</dialog>
+<script src="js/cafe-mobile.js"></script>
 </body>
 </html>
 

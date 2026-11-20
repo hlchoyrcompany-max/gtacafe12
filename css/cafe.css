@@ -244,3 +244,59 @@ body {
     background: #edf1e9 url('../assets/images/reflux-notebook-profile.png') center / cover no-repeat;
   }
 }
+
+.cafe-mobile-bar, .cafe-mobile-profile { display: none; }
+.cafe-mobile-drawer {
+  position: fixed;
+  inset: 0 0 0 auto;
+  max-height: 100dvh;
+  height: 100dvh;
+  width: min(330px, calc(100% - 42px));
+  max-width: none;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: #fff;
+}
+.cafe-mobile-drawer::backdrop { background: #0006; }
+.cafe-mobile-drawer-heading { display: flex; align-items: center; justify-content: space-between; padding: 12px 16px; border-bottom: 1px solid #eee; }
+.cafe-mobile-drawer-heading h2 { font-size: 17px; }
+.cafe-mobile-drawer-heading button { width: 44px; height: 44px; font-size: 26px; }
+.cafe-mobile-drawer-links { padding: 10px 16px 24px; font-size: 14px; }
+.cafe-mobile-drawer-links h2 { font-size: 14px; padding: 11px 8px; border-bottom: 1px solid #eee; }
+.cafe-mobile-drawer-links nav a, .cafe-mobile-drawer-links .cafe-menu-group > span { display: block; padding: 8px; }
+
+@media (max-width: 767px) {
+  .cafe-mobile-bar {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    min-height: 54px;
+    padding: env(safe-area-inset-top, 0px) 15px 0;
+    background: #00ae58;
+    color: #fff;
+  }
+  .cafe-mobile-article .cafe-mobile-bar { position: sticky; top: 0; z-index: 20; }
+  .cafe-mobile-title { flex: 1; min-width: 0; font-size: 17px; font-weight: 800; color: inherit; }
+  .cafe-mobile-back, .cafe-mobile-menu { display: grid; place-items: center; width: 44px; height: 44px; color: inherit; }
+  .cafe-mobile-back { margin-left: -8px; }
+  .cafe-mobile-menu { margin-right: -8px; }
+  .cafe-mobile-back::before { content: ''; width: 10px; height: 10px; border: solid currentColor; border-width: 0 0 2px 2px; transform: rotate(45deg); }
+  .cafe-mobile-menu span { width: 19px; height: 2px; background: currentColor; box-shadow: 0 -6px currentColor, 0 6px currentColor; }
+  .cafe-mobile-article .cafe-banner, .cafe-mobile-article .bottom-nav { display: none; }
+  .cafe-mobile-article .cafe-post-header .post-title { margin: 18px 0 22px; }
+  .cafe-mobile-article #comments { scroll-margin-top: 68px; }
+  .cafe-mobile-home .cafe-banner { display: block; aspect-ratio: 944 / 327; padding: 0; background: #edf1e9 url('../assets/images/reflux-notebook-banner.png') center / cover no-repeat; }
+  .cafe-mobile-home .cafe-banner::before { content: none; }
+  .cafe-mobile-profile {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    min-height: 78px;
+    padding: 12px 20px;
+    background: #00ae58;
+    color: #fff;
+    font-size: 18px;
+  }
+  .cafe-mobile-profile img { border-radius: 50%; }
+}

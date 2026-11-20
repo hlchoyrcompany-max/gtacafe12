@@ -51,3 +51,31 @@
   .home-board td, .home-board th { padding: 10px 5px; }
   .home-board td:nth-child(2), .home-board th:nth-child(2) { display: none; }
 }
+
+@media (max-width: 767px) {
+  .cafe-mobile-home .cafe-home { padding-inline: 0; }
+  .cafe-mobile-home .cafe-intro { display: none; }
+  .cafe-mobile-home .mobile-home-nav {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    gap: 7px;
+    padding: 14px 16px;
+    border-bottom: 8px solid #f5f6f8;
+  }
+  .cafe-mobile-home .mobile-home-nav a {
+    flex: none;
+    display: grid;
+    place-items: center;
+    min-height: 40px;
+    padding: 0 15px;
+    border: 1px solid #e7e9eb;
+    border-radius: 24px;
+    color: #151515;
+  }
+  .cafe-mobile-home .mobile-home-nav a[aria-current='page'] {
+    background: #00ae58;
+    border-color: #00ae58;
+    color: #fff;
+  }
+  .cafe-mobile-home .home-board { margin: 16px 16px 0; }
+}

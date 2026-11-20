@@ -3,6 +3,9 @@
   const requested = new URLSearchParams(location.search).get('board');
   const hasBoard = core.boards.includes(requested);
   const board = hasBoard ? requested : '전체글';
+  for (const tab of document.querySelectorAll('.mobile-home-nav [data-board]')) {
+    if (tab.dataset.board === (hasBoard ? board : '')) tab.setAttribute('aria-current', 'page');
+  }
   const allPosts = window.BLOG_DATA.posts;
   const posts = hasBoard ? allPosts : allPosts.filter(post => post.hideFromHome !== true);
   const rows = document.getElementById('home-rows');
