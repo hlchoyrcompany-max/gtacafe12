@@ -51,6 +51,7 @@
 
   function render() {
     const results = core.filterPosts(posts, board, query);
+    if (!requested && !query) results.sort((a, b) => Number(a.category === "공지") - Number(b.category === "공지"));
     const totalPages = Math.max(1, Math.ceil(results.length / pageSize));
     page = Math.min(totalPages, Math.max(1, Math.floor(page)));
     rows.replaceChildren();
