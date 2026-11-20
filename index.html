@@ -1,12 +1,207 @@
-<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>달콤라떼</title><meta name="description" content=""><meta property="og:title" content="달콤라떼"><meta property="og:description" content=""><link rel="stylesheet" href="css/home.css"></head>
-<body><a href="#main" class="home-skip">본문 바로가기</a><div class="mobile-blog">
-<header class="site-header"><a class="blog-service" href="index.html">blog</a></header>
-<section class="profile-cover" aria-label="블로그 커버"><img id="heroImage" alt="블로그 커버 이미지" hidden><div class="cover-decoration" aria-hidden="true"></div></section>
-<section class="blog-profile"><div class="profile-avatar" aria-hidden="true">기</div><h1 data-site-name>달콤라떼</h1><p class="profile-post-count">전체글 <span id="postCount">0</span></p></section>
-<nav class="profile-navigation" aria-label="블로그 메뉴"><a href="index.html" aria-current="page">블로그</a></nav>
-<main id="main"><nav class="home-tabs" id="homeTabs" aria-label="게시판 메뉴"></nav>
-<section class="home-section notice-section" id="noticeSection" hidden><div class="section-heading"><h2>공지사항</h2><a href="board.html?board=%EA%B3%B5%EC%A7%80">더보기</a></div><div id="noticePosts"></div></section>
-<section class="home-section" id="featuredSection" hidden><div class="section-heading"><h2>인기글</h2><a href="board.html?board=%EC%9D%B8%EA%B8%B0%EA%B8%80">더보기</a></div><p class="section-description">선정한 글을 모아봅니다.</p><div id="featuredPosts" class="featured-grid"></div></section>
-<section class="home-section" id="latest"><div class="section-heading"><h2 id="listTitle">전체글</h2><span class="result-count" id="resultCount"></span></div><form class="home-search" id="searchForm" role="search"><label class="sr-only" for="searchInput">글 검색</label><input id="searchInput" type="search" placeholder="이 블로그에서 검색"><button type="submit" aria-label="검색">⌕</button></form><div id="latestPosts"></div><button class="load-more" id="loadMore" type="button" hidden>더 보기</button></section>
-<section class="keyword-section" id="keywords"><h2>키워드</h2><div class="tag-cloud" id="tagCloud"></div></section></main>
-</div><script src="blog-data.js?v=20261118-product-card"></script><script src="js/core.js"></script><script src="js/blog-core.js?v=20261118-clean"></script><script src="js/home.js?v=20261118-navigation"></script></body></html>
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="description" content="편안한 하루 카페 게시판">
+  <title>편안한 하루 · 카페 홈</title>
+  <link rel="stylesheet" href="css/common.css">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/blog.css">
+  <link rel="stylesheet" href="css/brand.css?v=20261118-small-heart">
+  <link rel="stylesheet" href="css/cafe.css?v=4">
+  <style>
+    .cafe-home { min-width: 0; color: #252825; font-size: 14px; }
+    .cafe-intro {
+      display: flex;
+      align-items: center;
+      gap: 22px;
+      min-height: 170px;
+      padding: 28px 32px;
+      border: 1px solid #e3e8e2;
+      background: #f5f8f4;
+    }
+    .cafe-intro img { width: 82px; height: 82px; border-radius: 50%; }
+    .cafe-intro h1 { font-size: 24px; font-weight: 800; margin: 0 0 9px; }
+    .cafe-intro p { margin: 0; color: #46584b; line-height: 1.65; }
+    .home-board { margin-top: 26px; scroll-margin-top: 16px; }
+    .home-board-heading {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 0 2px 12px;
+      border-bottom: 2px solid #444;
+    }
+    .home-board-heading h2 { margin: 0; font-size: 17px; }
+    .home-board-heading a { color: #4d6052; font-size: 13px; }
+    .home-board table { width: 100%; border-collapse: collapse; }
+    .home-board th, .home-board td { text-align: left; padding: 11px 8px; border-bottom: 1px solid #e5e5e5; }
+    .home-board th { color: #59645c; font-weight: 700; }
+    .home-board td:not(:first-child) { white-space: nowrap; color: #59645c; font-size: 13px; }
+    .home-board td:first-child { overflow-wrap: anywhere; }
+    .home-board td:first-child a:hover { text-decoration: underline; }
+    .home-board .home-empty { text-align: center; padding: 36px 12px; color: #59645c; }
+    .home-board-search { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin: 18px 0; }
+    .home-board-search input, .home-board-search button, .home-board-more {
+      font: inherit;
+      min-height: 38px;
+      border: 1px solid #d7ddd7;
+      border-radius: 4px;
+      padding: 6px 12px;
+    }
+    .home-board-search input { flex: 0 1 240px; min-width: 0; }
+    .home-board-search button, .home-board-more { color: #245239; background: #f3f7f3; cursor: pointer; }
+    .home-board-more { display: block; margin: 15px auto; }
+    .mobile-home-nav { display: none; }
+    @media (max-width: 767px) {
+      .cafe-home { padding: 0 16px 24px; }
+      .mobile-home-nav { display: flex; flex-wrap: wrap; gap: 6px 14px; padding: 10px 0; }
+      .mobile-home-nav a { padding: 6px 0; color: #245239; }
+      .cafe-intro { min-height: auto; padding: 18px 14px; gap: 12px; }
+      .cafe-intro img { width: 54px; height: 54px; }
+      .cafe-intro h1 { font-size: 20px; }
+      .home-board td, .home-board th { padding: 10px 5px; }
+      .home-board td:nth-child(2), .home-board th:nth-child(2) { display: none; }
+    }
+  </style>
+</head>
+<body>
+<a class="skip-link" href="#home">본문 바로가기</a>
+<div class="cafe-shell" id="top">
+  <a class="cafe-banner" href="?#top" aria-label="카페 홈"></a>
+  <div class="cafe-layout">
+    <aside class="cafe-sidebar">
+      <div class="cafe-side-tabs">
+        <strong>카페정보</strong><span aria-disabled="true">나의활동</span>
+      </div>
+      <section class="cafe-profile" aria-label="카페 정보">
+        <div class="cafe-profile-name">
+          <span class="cafe-avatar" aria-hidden="true"></span>
+          <div><strong>편안한 하루</strong> <small class="cafe-rank">매니저</small>
+          <a class="cafe-about" href="?#top">카페소개</a></div>
+        </div>
+      </section>
+      <div class="cafe-members"><span>👥 회원</span><span aria-disabled="true">초대</span></div>
+      <button class="cafe-join" type="button" disabled>카페 가입하기</button>
+      <button class="cafe-chat" type="button" disabled>카페 채팅</button>
+      <nav aria-label="카페 메뉴">
+        <div class="cafe-quick">
+          <a href="?board=%EC%A0%84%EC%B2%B4%EA%B8%80#latest"><span>▤ 전체글보기</span><span id="cafePostCount"></span></a>
+          <a href="?board=%EC%9D%B8%EA%B8%B0%EA%B8%80#latest">♧ 인기글</a>
+        </div>
+        <section class="cafe-menu-group">
+          <h2>※ 카페 안내</h2>
+          <a href="?board=%EA%B3%B5%EC%A7%80#latest">공지사항</a>
+          <span>카페 규칙(필독)</span>
+        </section>
+        <section class="cafe-menu-group">
+          <h2>※ 관리 / 치료 정보공유</h2>
+          <a href="?board=%ED%9B%84%EA%B8%B0#latest">치료/관리 후기</a>
+          <span>건강 관리 정보</span>
+          <span>생활 습관 기록</span>
+        </section>
+        <section class="cafe-menu-group">
+          <h2>※ 커뮤니티</h2>
+          <a href="?board=%EC%9E%90%EC%9C%A0%EA%B2%8C%EC%8B%9C%ED%8C%90#latest">자유 게시판</a>
+          <span>질문 &amp; 답변</span>
+          <span>건강 관리 TIP</span>
+        </section>
+        <section class="cafe-menu-group">
+          <h2>※ 자료실</h2>
+          <span>논문 요약 자료</span>
+          <span>전문가 칼럼 및 뉴스</span>
+        </section>
+      </nav>
+      <details class="cafe-more"><summary aria-label="카페 메뉴 더보기">메뉴 더보기</summary><a href="?#top">카페 홈</a></details>
+    </aside>
+    <main class="cafe-home" id="home">
+      <nav class="mobile-home-nav" aria-label="카페 게시판">
+        <a href="?board=%EC%A0%84%EC%B2%B4%EA%B8%80#latest">전체글</a>
+        <a href="?board=%EC%9D%B8%EA%B8%B0%EA%B8%80#latest">인기글</a>
+        <a href="?board=%EA%B3%B5%EC%A7%80#latest">공지사항</a>
+        <a href="?board=%EC%9E%90%EC%9C%A0%EA%B2%8C%EC%8B%9C%ED%8C%90#latest">자유 게시판</a>
+      </nav>
+      <section class="cafe-intro" aria-labelledby="home-title">
+        <img src="assets/images/reflux-notebook-profile.png" width="82" height="82" alt="">
+        <div>
+          <h1 id="home-title">편안한 하루</h1>
+          <p>역류성 식도염과 일상 속 건강 관리 이야기를 나눕니다.</p>
+        </div>
+      </section>
+      <section class="home-board" id="latest" aria-labelledby="board-title">
+        <div class="home-board-heading">
+          <h2 id="board-title">전체글보기</h2>
+          <a id="board-link" href="board.html">게시판 열기</a>
+        </div>
+        <table aria-labelledby="board-title">
+          <thead><tr><th scope="col">제목</th><th scope="col">작성자</th><th scope="col">작성일</th></tr></thead>
+          <tbody id="home-rows"><tr><td class="home-empty" colspan="3">게시글을 불러오는 중입니다.</td></tr></tbody>
+        </table>
+        <button class="home-board-more" id="home-more" type="button" hidden>글 더 보기</button>
+        <form class="home-board-search" id="home-search" role="search">
+          <label class="skip-link" for="home-query">게시글 검색</label>
+          <input id="home-query" type="search" placeholder="게시글 검색">
+          <button type="submit">검색</button>
+        </form>
+      </section>
+    </main>
+  </div>
+</div>
+<noscript><p>게시글 목록을 보려면 JavaScript를 켜 주세요.</p></noscript>
+<script src="blog-data.js?v=20261118-product-card"></script>
+<script src="js/blog-core.js?v=20261118-clean"></script>
+<script>
+  (() => {
+    const core = window.BlogCore;
+    const requested = new URLSearchParams(location.search).get('board');
+    const hasBoard = core.boards.includes(requested);
+    const board = hasBoard ? requested : '전체글';
+    const allPosts = window.BLOG_DATA.posts;
+    const posts = hasBoard ? allPosts : allPosts.filter(post => post.hideFromHome !== true);
+    const rows = document.getElementById('home-rows');
+    const input = document.getElementById('home-query');
+    const more = document.getElementById('home-more');
+    let query = '';
+    let limit = 10;
+
+    document.getElementById('cafePostCount').textContent = core.visible(allPosts).length.toLocaleString('ko-KR');
+    document.getElementById('board-title').textContent = board === '전체글' ? '전체글보기' : board;
+    document.getElementById('board-link').href = 'board.html?board=' + encodeURIComponent(board);
+
+    function render() {
+      const results = core.filterPosts(posts, board, query);
+      rows.replaceChildren();
+      for (const post of results.slice(0, limit)) {
+        const row = rows.insertRow();
+        const link = document.createElement('a');
+        link.href = core.postHref(post.id, location.search);
+        link.textContent = post.title;
+        row.insertCell().append(link);
+        row.insertCell().textContent = post.author || '';
+        row.insertCell().textContent = post.date || '';
+      }
+      if (!results.length) {
+        const cell = rows.insertRow().insertCell();
+        cell.colSpan = 3;
+        cell.className = 'home-empty';
+        cell.textContent = query ? '검색 결과가 없습니다.' : '표시할 게시글이 없습니다.';
+      }
+      more.hidden = results.length <= limit;
+    }
+
+    document.getElementById('home-search').addEventListener('submit', event => {
+      event.preventDefault();
+      query = input.value.trim();
+      limit = 10;
+      render();
+    });
+    more.addEventListener('click', () => {
+      limit += 10;
+      render();
+    });
+    render();
+  })();
+</script>
+</body>
+</html>
