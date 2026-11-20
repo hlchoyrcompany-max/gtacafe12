@@ -9,6 +9,18 @@
   function render(config){
     current=config||{};document.title=(current.title||'새로운 기록')+' — '+(window.BLOG_DATA?.site?.name||'오늘의 기록');
     text('postTitle',current.title);text('author',current.author);text('avatar',(current.author||'기').slice(0,1));text('date',current.date);text('footerBrand',window.BLOG_DATA?.site?.name||'오늘의 기록');
+    const views = byId('postViews');
+    if (views) {
+      const viewCount = Number(current.viewCount);
+      views.hidden = !Number.isInteger(viewCount) || viewCount < 0;
+      if (!views.hidden) {
+        const displayed = viewCount >= 10000
+          ? new Intl.NumberFormat('ko-KR', {maximumFractionDigits: 1}).format(viewCount / 10000) + '만'
+          : viewCount.toLocaleString('ko-KR');
+        views.textContent = ' · 조회 ' + displayed;
+        views.setAttribute('aria-label', '조회 ' + viewCount.toLocaleString('ko-KR'));
+      }
+    }
     document.querySelector('meta[name=description]').content=current.description||'';
     document.querySelector('meta[property="og:title"]').content=current.title||'';
     document.querySelector('meta[property="og:description"]').content=current.description||'';
