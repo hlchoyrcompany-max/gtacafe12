@@ -27,7 +27,7 @@
     if (nextPage > 1) next.set('page', String(nextPage));
     if (query) next.set('q', query);
     if (example) next.set('example', example);
-    return '?' + next + (example ? '#home-example' : '#latest');
+    return '?' + next + (example ? '' : '#latest');
   }
 
   function addPageLink(number, label) {
@@ -97,13 +97,23 @@
 
   const sample = core.getPost(posts, params.get('example'));
   if (sample) {
+    document.body.classList.add('cafe-home-detail');
     document.getElementById('latest').hidden = true;
     document.getElementById('home-example').hidden = false;
-    document.getElementById('example-title').textContent = sample.title;
+    const headline = sample.title.slice(sample.category.length + 3);
+    document.title = headline + ' · 위식도역류질환 온라인 커뮤니티';
+    const category = document.getElementById('example-category');
+    category.textContent = sample.category + ' 〉';
+    category.href = '?' + new URLSearchParams({board: sample.category}) + '#latest';
+    document.getElementById('example-title').textContent = headline;
+    document.getElementById('example-author').textContent = sample.author;
     document.getElementById('example-meta').textContent =
-      `${sample.author} · ${sample.date} · 조회 ${integer.format(sample.views)} · 좋아요 ${integer.format(sample.likes)}`;
-    document.getElementById('example-body').textContent = sample.description;
-    document.getElementById('example-back').href = href(page);
+      `${sample.date.replaceAll('-', '.')}. 조회 ${integer.format(sample.views)}`;
+    document.getElementById('example-likes').textContent = integer.format(sample.likes);
+    document.getElementById('example-comments').textContent = isNotice(sample) ? '0' : sample.likes % 6;
+    const back = href(page);
+    document.getElementById('example-back').href = back;
+    document.getElementById('example-footer-back').href = back;
     return;
   }
 

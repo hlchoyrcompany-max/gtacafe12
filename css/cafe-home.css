@@ -93,10 +93,6 @@
 .home-pagination { display: flex; flex-wrap: wrap; justify-content: center; gap: 4px; margin: 16px 0; }
 .home-pagination a { padding: 7px 9px; border: 1px solid #e3e8e2; border-radius: 4px; }
 .home-pagination a[aria-current='page'] { background: #245239; border-color: #245239; color: #fff; }
-.home-example h2 { margin: 16px 0 10px; }
-#example-meta { color: #536258; font-size: 13px; }
-#example-body { margin: 24px 0; line-height: 1.8; white-space: pre-line; }
-#example-back { color: #245239; text-decoration: underline; }
 @media (max-width: 767px) {
   .cafe-mobile-home .cafe-banner { display: none; }
   .cafe-mobile-home .cafe-mobile-drawer .cafe-quick a > span:nth-child(2) { display: none; }
@@ -156,7 +152,6 @@
   .cafe-mobile-home .home-board td:nth-child(4)::before { content: '조회 '; }
   .cafe-mobile-home .home-board td:nth-child(5)::before { content: '♡ '; }
   .cafe-mobile-home .home-board .home-empty { padding: 16px 0; }
-  .cafe-mobile-home .home-example { padding: 16px; }
   .cafe-mobile-home .home-example .home-example-note { margin-left: 0; }
   .home-mobile-join {
     display: block;
@@ -198,4 +193,78 @@
     font-size: 10px;
   }
   .home-mobile-comments strong { color: #242824; font-size: 14px; }
+}
+
+.cafe-home-detail .cafe-intro { display: none; }
+.home-example-header { padding-bottom: 22px; }
+.home-example-header h1 {
+  margin: 18px 0 24px;
+  color: #111;
+  font-size: 23px;
+  font-weight: 400;
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+}
+.home-example-byline { display: flex; align-items: center; gap: 9px; }
+.home-example-byline strong { font-size: 15px; font-weight: 400; }
+.home-example-byline p { margin-top: 6px; color: #858c87; font-size: 12px; }
+.home-example-avatar {
+  flex: none;
+  width: 40px;
+  height: 40px;
+  border: 10px solid #e7e9e9;
+  border-radius: 50%;
+  background: #fff;
+}
+.home-example-lock {
+  min-height: 370px;
+  padding: 52px 16px 72px;
+  border-top: 7px solid #f2f3f4;
+  text-align: center;
+}
+.home-lock-icon {
+  position: relative;
+  display: block;
+  width: 23px;
+  height: 18px;
+  margin: 10px auto 20px;
+  border: 2px solid #aeb8b2;
+  border-radius: 4px;
+}
+.home-lock-icon::before {
+  content: '';
+  position: absolute;
+  top: -13px;
+  left: 50%;
+  width: 14px;
+  height: 12px;
+  border: 2px solid #aeb8b2;
+  border-bottom: 0;
+  border-radius: 10px 10px 0 0;
+  transform: translateX(-50%);
+}
+.home-lock-icon::after {
+  content: '';
+  position: absolute;
+  width: 2px;
+  height: 4px;
+  top: 5px;
+  left: calc(50% - 1px);
+  background: #aeb8b2;
+}
+.home-example-lock h2 { margin: 0; font-size: 18px; line-height: 1.5; color: #111; }
+.home-example-lock p { margin: 10px 0 26px; color: #727b75; font-size: 14px; line-height: 1.5; }
+.home-example-lock a { display: inline-block; padding: 10px 22px; border: 1px solid #dce3de; border-radius: 6px; color: #111; }
+.home-example-footer, .home-example-stats { display: flex; align-items: center; gap: 16px; }
+.home-example-footer { justify-content: space-between; border-top: 1px solid #e3e5e4; padding: 15px 0; }
+.home-example-heart { color: #e84050; font-size: 20px; vertical-align: middle; }
+
+@media (max-width: 767px) {
+  .cafe-home-detail .cafe-mobile-profile,
+  .cafe-home-detail .mobile-home-nav,
+  .cafe-home-detail .home-mobile-join { display: none; }
+  .cafe-mobile-home.cafe-home-detail .cafe-home { padding-bottom: 0; }
+  .cafe-home-detail .cafe-mobile-bar { position: sticky; top: 0; z-index: 20; }
+  .home-example-header { padding: 22px 16px; }
+  .home-example-footer { padding: 15px 16px calc(15px + env(safe-area-inset-bottom)); }
 }

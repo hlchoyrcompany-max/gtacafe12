@@ -10,7 +10,7 @@
   <link rel="stylesheet" href="css/blog.css">
   <link rel="stylesheet" href="css/brand.css?v=20261118-small-heart">
   <link rel="stylesheet" href="css/cafe.css?v=7">
-  <link rel="stylesheet" href="css/cafe-home.css?v=8">
+  <link rel="stylesheet" href="css/cafe-home.css?v=9">
 </head>
 <body class="cafe-mobile-home">
 <a class="skip-link" href="#home">본문 바로가기</a>
@@ -99,11 +99,31 @@
           <button type="submit">검색</button>
         </form>
       </section>
-      <article class="home-board home-example" id="home-example" hidden>
-        <h2 id="example-title"></h2>
-        <p id="example-meta"></p>
-        <p id="example-body"></p>
-        <a id="example-back" href="#latest">목록으로</a>
+      <article class="home-example" id="home-example" aria-labelledby="example-title" hidden>
+        <header class="home-example-header">
+          <a id="example-category" class="cafe-post-category" href="#latest"></a>
+          <h1 id="example-title"></h1>
+          <div class="home-example-byline">
+            <span class="home-example-avatar" aria-hidden="true"></span>
+            <div>
+              <strong id="example-author"></strong>
+              <p id="example-meta"></p>
+            </div>
+          </div>
+        </header>
+        <div class="home-example-lock">
+          <span class="home-lock-icon" aria-hidden="true"></span>
+          <h2>카페 회원만 볼 수 있는 글입니다</h2>
+          <p>이 게시글은 회원에게만 공개됩니다.</p>
+          <a id="example-back" href="#latest">목록으로 돌아가기</a>
+        </div>
+        <footer class="home-example-footer">
+          <a id="example-footer-back" href="#latest">≡ 목록으로</a>
+          <span class="home-example-stats">
+            <span><span class="home-example-heart" aria-hidden="true">♡</span> <span class="skip-link">좋아요</span><span id="example-likes"></span></span>
+            <span><span aria-hidden="true">♧</span> <span class="skip-link">댓글</span><span id="example-comments"></span></span>
+          </span>
+        </footer>
       </article>
       <button class="home-mobile-join" type="button" disabled>카페 가입하기</button>
     </main>
@@ -112,7 +132,7 @@
 <noscript><p>게시글 목록을 보려면 JavaScript를 켜 주세요.</p></noscript>
 <script src="js/cafe-example-posts.js?v=6"></script>
 <script src="js/blog-core.js?v=20261118-clean"></script>
-<script src="js/cafe-home.js?v=10"></script>
+<script src="js/cafe-home.js?v=11"></script>
 <dialog class="cafe-mobile-drawer" id="cafe-mobile-drawer" aria-labelledby="cafe-mobile-drawer-title">
   <div class="cafe-mobile-drawer-heading">
     <h2 id="cafe-mobile-drawer-title">게시판 메뉴</h2>
