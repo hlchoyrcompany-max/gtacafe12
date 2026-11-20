@@ -1,8 +1,7 @@
-(function(){
-  'use strict';
-  const core=window.BlogCore;const data=window.BLOG_DATA||{site:{},posts:[]};const params=new URLSearchParams(location.search);const requested=params.get('board');const board=core.boards.includes(requested)?requested:'전체글';let query='';let limit=10;
-  const $=id=>document.getElementById(id);document.title=board+' — '+(data.site.name||'오늘의 기록');$('boardBrand').textContent=data.site.name||'오늘의 기록';$('boardTitle').textContent=board;
-  for(const name of core.boards){const a=document.createElement('a');a.textContent=name;a.href='board.html?board='+encodeURIComponent(name);if(name===board)a.setAttribute('aria-current','page');$('boardTabs').append(a);}
-  function draw(){const posts=core.filterPosts(data.posts,board,query);$('boardList').replaceChildren();$('boardCount').textContent=posts.length+'개의 글'+(board==='인기글'?' · 운영자 선정':'');for(const post of posts.slice(0,limit)){const a=document.createElement('a');a.className='board-post';a.href=core.postHref(post.id,location.search);const title=document.createElement('strong');title.textContent=post.title;const excerpt=document.createElement('p');excerpt.textContent=post.description||'';const info=document.createElement('span');info.textContent=[post.category,post.author,post.date].filter(Boolean).join(' · ');a.append(title,excerpt,info);$('boardList').append(a);}if(!posts.length){const p=document.createElement('p');p.className='board-empty';p.textContent=query?'검색 결과가 없습니다.':'아직 등록된 게시글이 없습니다.';$('boardList').append(p);}$('boardMore').hidden=posts.length<=limit;}
-  $('boardSearchForm').addEventListener('submit',e=>{e.preventDefault();query=$('boardSearch').value.trim();limit=10;draw();});$('boardSearch').addEventListener('input',()=>{if(!$('boardSearch').value){query='';limit=10;draw();}});$('boardMore').addEventListener('click',()=>{limit+=10;draw();});draw();
+(() => {
+  const next = new URL('index.html', location.href);
+  next.search = location.search;
+  if (!next.searchParams.has('board')) next.searchParams.set('board', '전체글');
+  next.hash = '#latest';
+  location.replace(next.href);
 })();
