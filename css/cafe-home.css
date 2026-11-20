@@ -79,3 +79,12 @@
   }
   .cafe-mobile-home .home-board { margin: 16px 16px 0; }
 }
+
+@media (min-width: 768px) {
+  .cafe-home {
+    padding: 30px 32px 12px;
+    border: 1px solid #e3e5e4;
+    border-radius: 6px;
+    background: #fff;
+  }
+}
