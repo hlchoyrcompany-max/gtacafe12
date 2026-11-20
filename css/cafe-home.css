@@ -268,3 +268,9 @@
   .home-example-header { padding: 22px 16px; }
   .home-example-footer { padding: 15px 16px calc(15px + env(safe-area-inset-bottom)); }
 }
+
+.cafe-mobile-bar .home-detail-return { display: none; }
+@media (max-width: 767px) {
+  .cafe-home-detail .cafe-mobile-bar .home-detail-return { display: grid; }
+  .cafe-home-detail .cafe-mobile-title { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+}

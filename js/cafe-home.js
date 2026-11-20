@@ -23,7 +23,8 @@
   }
 
   function href(nextPage, example) {
-    const next = new URLSearchParams({board});
+    const next = new URLSearchParams();
+    if (boards.has(requested)) next.set('board', board);
     if (nextPage > 1) next.set('page', String(nextPage));
     if (query) next.set('q', query);
     if (example) next.set('example', example);
@@ -114,6 +115,7 @@
     const back = href(page);
     document.getElementById('example-back').href = back;
     document.getElementById('example-footer-back').href = back;
+    document.querySelector('.home-detail-return').href = back;
     return;
   }
 
