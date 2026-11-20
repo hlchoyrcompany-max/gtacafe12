@@ -10,7 +10,7 @@
   <link rel="stylesheet" href="css/blog.css">
   <link rel="stylesheet" href="css/brand.css?v=20261118-small-heart">
   <link rel="stylesheet" href="css/cafe.css?v=6">
-  <link rel="stylesheet" href="css/cafe-home.css?v=4">
+  <link rel="stylesheet" href="css/cafe-home.css?v=5">
 </head>
 <body class="cafe-mobile-home">
 <a class="skip-link" href="#home">본문 바로가기</a>
@@ -67,6 +67,7 @@
 
         </div>
         <p class="home-example-note">예시 게시판입니다. 글과 활동 수치는 화면 확인용으로 만든 예시입니다.</p>
+        <div class="home-mobile-pinned" id="home-mobile-pinned" hidden></div>
         <table aria-labelledby="board-title">
           <thead><tr><th scope="col">제목</th><th scope="col">작성자</th><th scope="col">작성일</th><th scope="col">조회</th><th scope="col">좋아요</th></tr></thead>
           <tbody id="home-rows"><tr><td class="home-empty" colspan="5">게시글을 불러오는 중입니다.</td></tr></tbody>
@@ -85,13 +86,14 @@
         <p id="example-body"></p>
         <a id="example-back" href="#latest">목록으로</a>
       </article>
+      <button class="home-mobile-join" type="button" disabled>카페 가입하기</button>
     </main>
   </div>
 </div>
 <noscript><p>게시글 목록을 보려면 JavaScript를 켜 주세요.</p></noscript>
 <script src="js/cafe-example-posts.js"></script>
 <script src="js/blog-core.js?v=20261118-clean"></script>
-<script src="js/cafe-home.js?v=4"></script>
+<script src="js/cafe-home.js?v=5"></script>
 <dialog class="cafe-mobile-drawer" id="cafe-mobile-drawer" aria-labelledby="cafe-mobile-drawer-title">
   <div class="cafe-mobile-drawer-heading">
     <h2 id="cafe-mobile-drawer-title">게시판 메뉴</h2>

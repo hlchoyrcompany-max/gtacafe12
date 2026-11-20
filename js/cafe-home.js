@@ -35,6 +35,20 @@
     pagination.append(link);
   }
 
+  function renderPinned() {
+    if (requested || query || page !== 1) return;
+    const pinned = document.getElementById('home-mobile-pinned');
+    for (const post of core.filterPosts(posts, '공지').slice(0, 2)) {
+      const link = document.createElement('a');
+      const badge = document.createElement('span');
+      badge.textContent = '필독';
+      link.href = href(1, post.id);
+      link.append(badge, post.title);
+      pinned.append(link);
+    }
+    pinned.hidden = false;
+  }
+
   function render() {
     const results = core.filterPosts(posts, board, query);
     const totalPages = Math.max(1, Math.ceil(results.length / pageSize));
@@ -82,5 +96,6 @@
     query = input.value.trim();
     location.href = href(1);
   });
+  renderPinned();
   render();
 })();

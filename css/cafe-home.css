@@ -103,3 +103,72 @@
   .cafe-mobile-home .home-board td, .cafe-mobile-home .home-board th { font-size: 12px; }
   .cafe-mobile-home .home-board td:first-child { font-size: 14px; }
 }
+
+.home-mobile-pinned, .home-mobile-join { display: none; }
+
+@media (max-width: 767px) {
+  .cafe-mobile-home .cafe-mobile-bar { min-height: 52px; padding-inline: 12px; }
+  .cafe-mobile-home .cafe-mobile-title { font-size: 16px; }
+  .cafe-mobile-home .cafe-mobile-profile { min-height: 91px; padding: 9px 16px 15px; }
+  .cafe-mobile-home .cafe-mobile-counts { color: #dcf4e6; }
+  .cafe-mobile-home .cafe-home { padding-bottom: calc(74px + env(safe-area-inset-bottom)); }
+  .cafe-mobile-home .home-board { margin: 0; }
+  .cafe-mobile-home .home-board-heading { display: none; }
+  .cafe-mobile-home .home-example-note { margin: 8px 16px; font-size: 12px; }
+  .home-mobile-pinned { display: block; }
+  .home-mobile-pinned a {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    min-height: 54px;
+    padding: 10px 16px;
+    border-bottom: 1px solid #f0f0f0;
+    font-size: 15px;
+    font-weight: 700;
+  }
+  .home-mobile-pinned a:first-child { border-top: 1px solid #f0f0f0; }
+  .home-mobile-pinned span { flex: none; padding: 3px 6px; border-radius: 12px; background: #555; color: #fff; font-size: 11px; }
+  .cafe-mobile-home .home-board table, .cafe-mobile-home .home-board tbody { display: block; }
+  .cafe-mobile-home .home-board thead { position: absolute; width: 1px; height: 1px; clip-path: inset(50%); overflow: hidden; }
+  .cafe-mobile-home .home-board tbody tr {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto auto auto;
+    align-items: end;
+    gap: 7px 6px;
+    min-height: 79px;
+    padding: 13px 16px;
+    border-bottom: 1px solid #f0f0f0;
+  }
+  .cafe-mobile-home .home-board tbody td {
+    display: block;
+    border: 0;
+    padding: 0;
+    font-size: 11px;
+    color: #667069;
+  }
+  .cafe-mobile-home .home-board tbody td:first-child {
+    grid-column: 1 / -1;
+    color: #242824;
+    font-size: 15px;
+    line-height: 1.5;
+  }
+  .cafe-mobile-home .home-board td:nth-child(2) { min-width: 0; overflow: hidden; text-overflow: ellipsis; }
+  .cafe-mobile-home .home-board td:nth-child(4)::before { content: '조회 '; }
+  .cafe-mobile-home .home-board td:nth-child(5)::before { content: '♡ '; }
+  .cafe-mobile-home .home-board .home-empty { padding: 16px 0; }
+  .cafe-mobile-home .home-example { padding: 16px; }
+  .cafe-mobile-home .home-example .home-example-note { margin-left: 0; }
+  .home-mobile-join {
+    display: block;
+    position: fixed;
+    z-index: 10;
+    inset: auto 16px calc(12px + env(safe-area-inset-bottom)) 16px;
+    height: 49px;
+    border-radius: 13px;
+    background: #00ae58;
+    color: #fff;
+    font-size: 17px;
+    font-weight: 700;
+    opacity: 1;
+  }
+}
