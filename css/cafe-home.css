@@ -1,0 +1,53 @@
+.cafe-home { min-width: 0; color: #252825; font-size: 14px; }
+.cafe-intro {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  min-height: 170px;
+  padding: 28px 32px;
+  border: 1px solid #e3e8e2;
+  background: #f5f8f4;
+}
+.cafe-intro img { width: 82px; height: 82px; border-radius: 50%; }
+.cafe-intro h1 { font-size: 24px; font-weight: 800; margin: 0 0 9px; }
+.cafe-intro p { margin: 0; color: #46584b; line-height: 1.65; }
+.home-board { margin-top: 26px; scroll-margin-top: 16px; }
+.home-board-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 0 2px 12px;
+  border-bottom: 2px solid #444;
+}
+.home-board-heading h2 { margin: 0; font-size: 17px; }
+.home-board-heading a { color: #4d6052; font-size: 13px; }
+.home-board table { width: 100%; border-collapse: collapse; }
+.home-board th, .home-board td { text-align: left; padding: 11px 8px; border-bottom: 1px solid #e5e5e5; }
+.home-board th { color: #59645c; font-weight: 700; }
+.home-board td:not(:first-child) { white-space: nowrap; color: #59645c; font-size: 13px; }
+.home-board td:first-child { overflow-wrap: anywhere; }
+.home-board td:first-child a:hover { text-decoration: underline; }
+.home-board .home-empty { text-align: center; padding: 36px 12px; color: #59645c; }
+.home-board-search { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin: 18px 0; }
+.home-board-search input, .home-board-search button, .home-board-more {
+  font: inherit;
+  min-height: 38px;
+  border: 1px solid #d7ddd7;
+  border-radius: 4px;
+  padding: 6px 12px;
+}
+.home-board-search input { flex: 0 1 240px; min-width: 0; }
+.home-board-search button, .home-board-more { color: #245239; background: #f3f7f3; cursor: pointer; }
+.home-board-more { display: block; margin: 15px auto; }
+.mobile-home-nav { display: none; }
+@media (max-width: 767px) {
+  .cafe-home { padding: 0 16px 24px; }
+  .mobile-home-nav { display: flex; flex-wrap: wrap; gap: 6px 14px; padding: 10px 0; }
+  .mobile-home-nav a { padding: 6px 0; color: #245239; }
+  .cafe-intro { min-height: auto; padding: 18px 14px; gap: 12px; }
+  .cafe-intro img { width: 54px; height: 54px; }
+  .cafe-intro h1 { font-size: 20px; }
+  .home-board td, .home-board th { padding: 10px 5px; }
+  .home-board td:nth-child(2), .home-board th:nth-child(2) { display: none; }
+}
