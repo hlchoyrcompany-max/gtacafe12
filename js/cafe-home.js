@@ -62,15 +62,16 @@
       link.textContent = post.title;
       const titleCell = row.insertCell();
       titleCell.append(link);
-      if (post.category !== '공지') {
+      const commentCount = post.likes % 6;
+      if (post.category !== '공지' && commentCount > 0) {
         const badge = document.createElement('span');
         badge.className = 'home-mobile-comments';
         const count = document.createElement('strong');
-        count.textContent = 1 + post.likes % 9;
+        count.textContent = commentCount;
         badge.append(count, '댓글');
         titleCell.append(badge);
       }
-      for (const value of [post.author, post.date, integer.format(post.views), integer.format(post.likes)]) {
+      for (const value of [post.author, post.date.replaceAll('-', '.') + '.', integer.format(post.views), integer.format(post.likes)]) {
         row.insertCell().textContent = value;
       }
     }

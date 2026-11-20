@@ -114,14 +114,14 @@
   .cafe-mobile-home .cafe-home { padding-bottom: calc(74px + env(safe-area-inset-bottom)); }
   .cafe-mobile-home .home-board { margin: 0; }
   .cafe-mobile-home .home-board-heading { display: none; }
-  .cafe-mobile-home .home-example-note { margin: 8px 16px; font-size: 12px; }
+  .cafe-mobile-home .home-example-note { margin: 5px 16px; font-size: 12px; }
   .home-mobile-pinned { display: block; }
   .home-mobile-pinned a {
     display: flex;
     align-items: center;
     gap: 6px;
-    min-height: 54px;
-    padding: 10px 16px;
+    min-height: 56px;
+    padding: 11px 16px;
     border-bottom: 1px solid #f0f0f0;
     font-size: 15px;
     font-weight: 700;
@@ -134,9 +134,9 @@
     display: grid;
     grid-template-columns: minmax(0, 1fr) auto auto auto;
     align-items: end;
-    gap: 7px 6px;
-    min-height: 79px;
-    padding: 13px 16px;
+    gap: 10px 7px;
+    min-height: 89px;
+    padding: 16px;
     border-bottom: 1px solid #f0f0f0;
   }
   .cafe-mobile-home .home-board tbody td {
@@ -149,7 +149,7 @@
   .cafe-mobile-home .home-board tbody td:first-child {
     grid-column: 1 / -1;
     color: #242824;
-    font-size: 15px;
+    font-size: 16px;
     line-height: 1.5;
   }
   .cafe-mobile-home .home-board td:nth-child(2) { min-width: 0; overflow: hidden; text-overflow: ellipsis; }
@@ -165,6 +165,7 @@
     inset: auto 16px calc(12px + env(safe-area-inset-bottom)) 16px;
     height: 49px;
     border-radius: 13px;
+    box-shadow: 0 4px 14px #0001;
     background: #00ae58;
     color: #fff;
     font-size: 17px;
@@ -178,7 +179,7 @@
 @media (max-width: 767px) {
   .cafe-mobile-home .home-board tbody tr:has(.home-mobile-comments) {
     position: relative;
-    padding-right: 68px;
+    padding-right: 72px;
   }
   .home-mobile-comments {
     display: grid;
@@ -188,8 +189,8 @@
     right: 16px;
     top: 50%;
     transform: translateY(-50%);
-    width: 42px;
-    min-height: 53px;
+    width: 45px;
+    min-height: 58px;
     border-radius: 12px;
     background: #f4f5f6;
     color: #667069;

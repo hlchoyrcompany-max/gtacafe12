@@ -10,7 +10,7 @@
   <link rel="stylesheet" href="css/blog.css">
   <link rel="stylesheet" href="css/brand.css?v=20261118-small-heart">
   <link rel="stylesheet" href="css/cafe.css?v=6">
-  <link rel="stylesheet" href="css/cafe-home.css?v=6">
+  <link rel="stylesheet" href="css/cafe-home.css?v=7">
 </head>
 <body class="cafe-mobile-home">
 <a class="skip-link" href="#home">본문 바로가기</a>
@@ -50,9 +50,9 @@
     </aside>
     <main class="cafe-home" id="home">
       <nav class="mobile-home-nav" aria-label="카페 게시판">
-        <a href="?board=인기글#latest" data-board="인기글">인기글</a>
-        <a href="?board=전체글#latest" data-board="전체글">전체</a>
-        <a href="?board=공지#latest" data-board="공지">공지</a>
+        <a href="index.html" data-board="전체글">홈</a>
+        <a href="?board=인기글#latest" data-board="인기글">인기</a>
+        <a href="?board=공지#latest" data-board="공지">전체공지</a>
       </nav>
       <section class="cafe-intro" aria-labelledby="home-title">
         <img src="assets/images/reflux-notebook-profile.png" width="82" height="82" alt="">
@@ -66,7 +66,7 @@
           <h2 id="board-title">전체글보기</h2>
 
         </div>
-        <p class="home-example-note">예시 게시판입니다. 글과 활동 수치는 화면 확인용으로 만든 예시입니다.</p>
+        <p class="home-example-note">게시글과 활동 수치는 예시입니다.</p>
         <div class="home-mobile-pinned" id="home-mobile-pinned" hidden></div>
         <table aria-labelledby="board-title">
           <thead><tr><th scope="col">제목</th><th scope="col">작성자</th><th scope="col">작성일</th><th scope="col">조회</th><th scope="col">좋아요</th></tr></thead>
@@ -93,7 +93,7 @@
 <noscript><p>게시글 목록을 보려면 JavaScript를 켜 주세요.</p></noscript>
 <script src="js/cafe-example-posts.js"></script>
 <script src="js/blog-core.js?v=20261118-clean"></script>
-<script src="js/cafe-home.js?v=7"></script>
+<script src="js/cafe-home.js?v=8"></script>
 <dialog class="cafe-mobile-drawer" id="cafe-mobile-drawer" aria-labelledby="cafe-mobile-drawer-title">
   <div class="cafe-mobile-drawer-heading">
     <h2 id="cafe-mobile-drawer-title">게시판 메뉴</h2>
