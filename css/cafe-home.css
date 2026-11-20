@@ -95,7 +95,7 @@
 .home-pagination a[aria-current='page'] { background: #245239; border-color: #245239; color: #fff; }
 .home-example h2 { margin: 16px 0 10px; }
 #example-meta { color: #536258; font-size: 13px; }
-#example-body { margin: 24px 0; line-height: 1.8; }
+#example-body { margin: 24px 0; line-height: 1.8; white-space: pre-line; }
 #example-back { color: #245239; text-decoration: underline; }
 @media (max-width: 767px) {
   .cafe-mobile-home .cafe-banner { display: none; }
