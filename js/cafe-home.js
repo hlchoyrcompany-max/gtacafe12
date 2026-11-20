@@ -56,7 +56,7 @@
     const results = board === '공지'
       ? core.filterPosts(posts, '전체글', query).filter(isNotice)
       : core.filterPosts(posts, board, query);
-    if (!requested && !query) results.sort((a, b) => Number(isNotice(a)) - Number(isNotice(b)));
+    if (board === '전체글' && !query) results.sort((a, b) => Number(isNotice(a)) - Number(isNotice(b)));
     const totalPages = Math.max(1, Math.ceil(results.length / pageSize));
     page = Math.min(totalPages, Math.max(1, Math.floor(page)));
     rows.replaceChildren();

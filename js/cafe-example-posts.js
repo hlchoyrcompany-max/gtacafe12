@@ -80,9 +80,9 @@
     '귓속바람', '멀리서온편지', '연못오후', '돌아가는풍차', '밤하늘계단', '산너머우유', '분홍머리끈', '사각식빵', '달력뒤메모', '수요일우산', '칠교놀이'
   ];
   const posts = [];
-  function add(title, description, category, featured) {
+  function add(title, description, category, featured, dateOffset = posts.length) {
     const index = posts.length;
-    const date = new Date(Date.UTC(2026, 10, 20 - index));
+    const date = new Date(Date.UTC(2026, 10, 20 - dateOffset));
     posts.push({
       id: 'example-' + (index + 1),
       title, description, category, featured, published: true,
@@ -156,7 +156,10 @@
       if (board === '건강 관리 TIP') body = `${context} 그래서 ${subject} 메모를 빠르게 찾을 수 있게 제목에 날짜를 붙였어요. ${observation}\n\n긴 내용을 다시 쓰기 번거로운 날에는 한 줄만 써도 다음에 이어 적기 편하더라고요.`;
       if (board === '논문 요약 자료') body = `${subject}와 ${condition} 관련 연구를 정리할 때는 누구를 대상으로 무엇을 비교했는지부터 확인합니다.\n\n‘${notes}’ 항목을 실제로 측정했는지, 연구 기간이 얼마였는지, 결과의 한계는 무엇인지도 따로 적어두면 논문끼리 비교하기 쉽습니다.`;
       if (board === '전문가 칼럼 및 뉴스') body = `${subject}에 관한 건강 기사를 읽으면서 ${condition}에 대한 일반 설명과 연구 인용을 구분해봤어요.\n\n‘${notes}’ 항목이 언급된 부분은 기사 날짜와 인용처를 확인하고, 원문에서 같은 내용으로 설명하는지 찾아보는 게 좋겠습니다.`;
-      add(title, body, board, featured);
+      const refluxCount = 11;
+      const topicPosition = index < refluxCount ? index * 2 : index < refluxCount * 2 ? (index - refluxCount) * 2 + 1 : index;
+      const dateOffset = notices.length + round * topics.length + topicPosition;
+      add(title, body, board, featured, dateOffset);
     });
   }
   window.CAFE_EXAMPLE_POSTS = posts;
