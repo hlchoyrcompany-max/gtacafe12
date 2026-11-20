@@ -35,6 +35,7 @@ jobs:
               cp -a "$site/$file" "_site/$site/"
             done
           done
+          cp -a "cafe/C8fR2mQ7nL4xT9sV6kDz" _site/cafe/
           # Preserve previously shared root-level article and asset URLs.
           cp -a _site/cafe/. _site/
           cp index.html _site/index.html
