@@ -25,17 +25,7 @@
     ['위염', '평일과 주말 비교', '식사 시간과 평소 생활의 차이'],
     ['위염', '증상 기록 양식', '날짜별 식사와 불편했던 시간을 적는 칸']
   ];
-  const formats = [
-    ['기록 양식', (subject, notes) => `‘${subject}’ 기록을 만들 때 첫 줄에는 날짜, 둘째 줄에는 기록 항목(${notes})을 적습니다. 다른 날과 비교하기 쉽도록 같은 순서로 쓰고, 기억이 정확하지 않은 내용은 빈칸으로 둡니다.`],
-    ['평일에 남기기', (subject, notes) => `바쁜 평일에는 ‘${subject}’에 대해 길게 적기 어렵습니다. 휴대폰 메모에 ‘${notes}’ 항목을 먼저 남기고, 저녁에 그날 평소와 달랐던 점이 있었는지 덧붙이는 방법을 생각해 봤습니다. 여러분은 언제 기록하시나요?`],
-    ['주말 기록과 비교', (subject, notes) => `‘${subject}’ 기록을 평일과 주말로 나눠 보려고 합니다. 비교할 항목은 ‘${notes}’입니다. 차이가 있다면 식사와 수면 일정도 함께 적되, 며칠의 기록만으로 원인을 정하지 않으려고 합니다.`],
-    ['진료 전에 메모하기', (subject, notes) => `다음 진료에서 ‘${subject}’에 대해 무엇부터 이야기하면 좋을까요? 우선 ‘${notes}’ 항목을 적고, 불편한 날이 얼마나 잦았는지 달력에 표시하려고 합니다. 마지막에는 의료진에게 직접 묻고 싶은 질문을 한 줄 적어 둡니다.`],
-    ['지난 기록 다시 읽기', (subject, notes) => `일주일 뒤 ‘${subject}’ 메모를 다시 읽을 때는 ‘${notes}’ 항목이 빠진 날부터 확인합니다. 기록이 없는 날과 증상이 없었던 날을 따로 표시하면 다음 주에 비교하기 편할 것 같습니다.`]
-  ];
-  const featuredFormats = [
-    ['한 장으로 정리하기', (subject, notes) => `‘${subject}’ 내용을 정리할 때 쓸 수 있는 메모 순서입니다. ① 날짜와 상황 ② ${notes} ③ 다음에 확인할 질문. 기억에 의존하지 않도록 바로 적은 내용과 나중에 떠올린 내용을 구분해 두면 다시 읽기 쉽습니다.`],
-    ['질문 체크리스트', (subject, notes) => `‘${subject}’ 관련 질문을 정리할 때 세 가지로 나눠 봅니다. 무엇이 가장 불편했는지, ‘${notes}’ 항목이 어떻게 달라졌는지, 앞으로 어떤 내용을 더 관찰할지입니다. 이 틀을 복사해 개인 기록에 써도 좋습니다.`]
-  ];
+  const formats = ['기록 양식', '평일에 남기기', '주말 기록과 비교', '진료 전에 메모하기', '지난 기록 다시 읽기'];
   const notices = [
     ['개인정보 없이 글 쓰기', '이름, 연락처, 주소나 환자번호는 게시물에 넣지 않습니다. 사진을 올릴 때도 화면에 남은 개인정보를 먼저 확인합니다.'],
     ['게시판 주제 고르기', '글 제목에 역류성 식도염이나 위염처럼 글의 주제를 표시해 주세요. 서로 다른 질문은 별도 글로 나누면 찾기 쉽습니다.'],
@@ -78,13 +68,30 @@
       likes: (featured ? 200 : 2) + index
     });
   }
-  notices.forEach(([title, body]) => add(title, body, '공지', false));
-  formats.forEach(([angle, body], round) => {
+  notices.forEach(([title, body], index) => {
+    const board = index % 2 === 0 ? '공지사항' : '카페 규칙(필독)';
+    add(`[${board}] ${title}`, body, board, false);
+  });
+
+  const discussionBoards = ['치료/관리 후기', '건강 관리 정보', '생활 습관 기록', '자유 게시판', '질문 & 답변', '건강 관리 TIP', '논문 요약 자료', '전문가 칼럼 및 뉴스'];
+  const writeByBoard = {
+    '치료/관리 후기': (condition, subject, notes) => `${condition}으로 진료를 준비하면서 ‘${subject}’에 관한 메모를 정리했습니다. 처음에는 기록 항목(${notes})을 한 문장에 몰아서 적었는데, 날짜별로 나눠 적으니 지난 기록을 찾기 편했습니다. 다음 방문 때는 이전에 들은 설명과 새 질문을 따로 가져가려 합니다.`,
+    '건강 관리 정보': (condition, subject, notes) => `${condition} 관련 ‘${subject}’ 정보를 읽을 때는 먼저 어떤 사람을 대상으로 한 설명인지 확인합니다. 개인 기록에서는 ‘${notes}’처럼 직접 관찰할 수 있는 항목을 따로 둡니다. 출처와 작성 날짜를 함께 적으면 나중에 같은 자료를 다시 찾을 수 있습니다.`,
+    '생활 습관 기록': (condition, subject, notes) => `이번 주 ${condition} 생활 기록 주제는 ‘${subject}’입니다. 달력에 ‘${notes}’ 항목을 표시하고, 평소와 달랐던 일정은 옆에 한 줄만 적었습니다. 다음 주에도 같은 항목을 써서 빠진 날이 있는지 먼저 살펴보려 합니다.`,
+    '자유 게시판': (condition, subject, notes) => `${condition} 기록을 하다 보니 ‘${subject}’ 메모가 여기저기 흩어지네요. ‘${notes}’까지 다 남기는 날도 있고 날짜만 쓰고 끝나는 날도 있어요. 여러분은 기록을 어디에 모아두시나요?`,
+    '질문 & 답변': (condition, subject, notes) => `${condition}과 관련해 ‘${subject}’ 기록을 어떻게 정리하는지 궁금합니다. 지금은 ‘${notes}’ 항목을 적어두고 있는데 빠뜨린 날이 많습니다. 매일 짧게 적는 방식과 주말에 모아서 정리하는 방식 중 어떤 게 편하셨나요?`,
+    '건강 관리 TIP': (condition, subject, notes) => `${condition} 메모에서 ‘${subject}’ 부분이 길어지면 제목을 날짜와 주제로 통일해 보세요. 첫 줄에 ‘${notes}’ 항목을 적고, 다음에 묻고 싶은 내용은 물음표로 시작하면 검색하기도 편합니다.`,
+    '논문 요약 자료': (condition, subject, notes) => `‘${subject}’와 ${condition} 관련 논문을 읽을 때 쓰는 요약 양식입니다. 연구 질문, 참여자, 비교 방법, 결과와 한계를 순서대로 기록합니다. ‘${notes}’ 항목이 실제 연구에서 측정됐는지와 저자가 결과를 어디까지 해석했는지도 함께 확인합니다.`,
+    '전문가 칼럼 및 뉴스': (condition, subject, notes) => `${condition} 관련 기사에서 ‘${subject}’ 내용을 다룬다면 작성일과 작성자, 인용한 원자료부터 확인합니다. 기사에서 언급한 ‘${notes}’ 항목이 전문가의 일반 설명인지 특정 연구 결과인지 구분해 두면 같은 주제의 글을 비교해 읽기 좋습니다.`
+  };
+
+  formats.forEach((angle, round) => {
     topics.forEach(([condition, subject, notes], index) => {
+      const board = discussionBoards[(round * 3 + index) % discussionBoards.length];
       const featured = (round + index) % 4 === 0;
-      const [label, write] = featured ? featuredFormats[round === 4 ? 1 : 0] : [angle, body];
-      const title = `[${condition}] ${subject} · ${label}`;
-      add(title, write(subject, notes), condition, featured);
+      const title = `[${board}] ${subject} · ${angle}`;
+      const body = writeByBoard[board](condition, subject, notes);
+      add(title, body, board, featured);
     });
   });
   window.CAFE_EXAMPLE_POSTS = posts;

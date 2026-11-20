@@ -3,7 +3,10 @@
   const posts = window.CAFE_EXAMPLE_POSTS;
   const params = new URLSearchParams(location.search);
   const requested = params.get('board');
-  const board = ['전체글', '인기글', '공지'].includes(requested) ? requested : '전체글';
+  const noticeBoards = ['공지사항', '카페 규칙(필독)'];
+  const boards = new Set(['전체글', '인기글', '공지', ...posts.map(post => post.category)]);
+  const board = boards.has(requested) ? requested : '전체글';
+  const isNotice = post => noticeBoards.includes(post.category);
   const rows = document.getElementById('home-rows');
   const input = document.getElementById('home-query');
   const pagination = document.getElementById('home-pagination');
@@ -12,7 +15,7 @@
   let query = params.get('q') || '';
   const integer = new Intl.NumberFormat('ko-KR');
   const boardTitle = {전체글: '전체글보기', 인기글: '인기글', 공지: '공지사항'};
-  document.getElementById('board-title').textContent = boardTitle[board];
+  document.getElementById('board-title').textContent = boardTitle[board] || board;
   input.value = query;
 
   for (const tab of document.querySelectorAll('[data-board]')) {
@@ -38,7 +41,7 @@
   function renderPinned() {
     if (requested || query || page !== 1) return;
     const pinned = document.getElementById('home-mobile-pinned');
-    for (const post of core.filterPosts(posts, '공지').slice(0, 2)) {
+    for (const post of core.filterPosts(posts, '전체글').filter(isNotice).slice(0, 2)) {
       const link = document.createElement('a');
       const badge = document.createElement('span');
       badge.textContent = '필독';
@@ -50,8 +53,10 @@
   }
 
   function render() {
-    const results = core.filterPosts(posts, board, query);
-    if (!requested && !query) results.sort((a, b) => Number(a.category === "공지") - Number(b.category === "공지"));
+    const results = board === '공지'
+      ? core.filterPosts(posts, '전체글', query).filter(isNotice)
+      : core.filterPosts(posts, board, query);
+    if (!requested && !query) results.sort((a, b) => Number(isNotice(a)) - Number(isNotice(b)));
     const totalPages = Math.max(1, Math.ceil(results.length / pageSize));
     page = Math.min(totalPages, Math.max(1, Math.floor(page)));
     rows.replaceChildren();
@@ -63,7 +68,7 @@
       const titleCell = row.insertCell();
       titleCell.append(link);
       const commentCount = post.likes % 6;
-      if (post.category !== '공지' && commentCount > 0) {
+      if (!isNotice(post) && commentCount > 0) {
         const badge = document.createElement('span');
         badge.className = 'home-mobile-comments';
         const count = document.createElement('strong');

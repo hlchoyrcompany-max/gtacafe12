@@ -301,3 +301,14 @@ body {
   .cafe-mobile-profile img { border-radius: 50%; }
 }
 .cafe-mobile-counts { margin-top: 5px; font-size: 13px; font-weight: 400; }
+
+@media (max-width: 767px) {
+  .cafe-mobile-drawer-links .cafe-quick a {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    min-height: 42px;
+  }
+  .cafe-mobile-drawer-links .cafe-menu-group a { min-height: 35px; }
+}
