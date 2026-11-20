@@ -4,7 +4,7 @@
   const hasBoard = core.boards.includes(requested);
   const board = hasBoard ? requested : '전체글';
   for (const tab of document.querySelectorAll('.mobile-home-nav [data-board]')) {
-    if (tab.dataset.board === (hasBoard ? board : '')) tab.setAttribute('aria-current', 'page');
+    if (tab.dataset.board === board) tab.setAttribute('aria-current', 'page');
   }
   const allPosts = window.BLOG_DATA.posts;
   const posts = hasBoard ? allPosts : allPosts.filter(post => post.hideFromHome !== true);
@@ -14,7 +14,6 @@
   let query = '';
   let limit = 10;
 
-  document.getElementById('cafePostCount').textContent = core.visible(allPosts).length.toLocaleString('ko-KR');
   document.getElementById('board-title').textContent = board === '전체글' ? '전체글보기' : board;
   document.getElementById('board-link').href = 'board.html?board=' + encodeURIComponent(board);
 

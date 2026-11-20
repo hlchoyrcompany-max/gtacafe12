@@ -4,7 +4,8 @@
   const navigation = document.querySelector('.cafe-sidebar nav').cloneNode(true);
 
   navigation.querySelectorAll('[id]').forEach(element => element.removeAttribute('id'));
-  drawer.querySelector('.cafe-mobile-drawer-links').append(navigation);
+  const members = document.querySelector('.cafe-members').firstElementChild.cloneNode(true);
+  drawer.querySelector('.cafe-mobile-drawer-links').append(members, navigation);
   menu.addEventListener('click', () => drawer.showModal());
   drawer.addEventListener('click', event => {
     if (event.target === drawer) drawer.close();

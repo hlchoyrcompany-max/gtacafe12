@@ -98,7 +98,6 @@
   menuSheet.addEventListener('click',event=>{if(event.target===menuSheet){const rect=menuSheet.getBoundingClientRect();if(event.clientX<rect.left||event.clientX>rect.right||event.clientY<rect.top||event.clientY>rect.bottom)closeMenu();}});
   const requestedPost=document.querySelector('meta[name=post-id]')?.content||new URLSearchParams(location.search).get('post');
   const blogPosts=window.BLOG_DATA?.posts||[];
-  text('cafePostCount',window.BlogCore.visible(blogPosts).length.toLocaleString());
   const localPreview=preview&&(location.protocol==='file:'||['127.0.0.1','localhost','[::1]'].includes(location.hostname));
   const post=requestedPost?(localPreview?blogPosts.find(p=>p.id===requestedPost):window.BlogCore.getPost(blogPosts,requestedPost)):window.BlogCore.visible(blogPosts)[0];
   render(post||{author:'',title:'글을 찾을 수 없습니다.',blocks:[{type:'paragraph',text:'삭제되었거나 공개되지 않은 글입니다. 하단 홈 메뉴를 눌러 돌아가세요.'}]});

@@ -9,7 +9,7 @@
   <link rel="stylesheet" href="css/main.css">
   <link rel="stylesheet" href="css/blog.css">
   <link rel="stylesheet" href="css/brand.css?v=20261118-small-heart">
-  <link rel="stylesheet" href="css/cafe.css?v=5">
+  <link rel="stylesheet" href="css/cafe.css?v=6">
   <link rel="stylesheet" href="css/cafe-home.css?v=2">
 </head>
 <body class="cafe-mobile-home">
@@ -22,7 +22,7 @@
   <a class="cafe-banner" href="?#top" aria-label="카페 홈"></a>
   <div class="cafe-mobile-profile">
     <img src="assets/images/reflux-notebook-profile.png" width="55" height="55" alt="">
-    <strong>편안한 하루</strong>
+    <div><strong>편안한 하루</strong><p class="cafe-mobile-counts">회원 113,049명 · 전체 글 298,387개</p></div>
   </div>
   <div class="cafe-layout">
     <aside class="cafe-sidebar">
@@ -36,46 +36,23 @@
           <a class="cafe-about" href="?#top">카페소개</a></div>
         </div>
       </section>
-      <div class="cafe-members"><span>👥 회원</span><span aria-disabled="true">초대</span></div>
+      <div class="cafe-members"><span>👥 회원 113,049명</span><span aria-disabled="true">초대</span></div>
       <button class="cafe-join" type="button" disabled>카페 가입하기</button>
       <button class="cafe-chat" type="button" disabled>카페 채팅</button>
       <nav aria-label="카페 메뉴">
         <div class="cafe-quick">
-          <a href="?board=%EC%A0%84%EC%B2%B4%EA%B8%80#latest"><span>▤ 전체글보기</span><span id="cafePostCount"></span></a>
-          <a href="?board=%EC%9D%B8%EA%B8%B0%EA%B8%80#latest">♧ 인기글</a>
+          <a href="?board=인기글#latest">♧ 인기글</a>
+          <a href="?board=전체글#latest"><span>▤ 전체글보기</span><span>298,387</span></a>
+          <a href="?board=공지#latest">공지사항</a>
         </div>
-        <section class="cafe-menu-group">
-          <h2>※ 카페 안내</h2>
-          <a href="?board=%EA%B3%B5%EC%A7%80#latest">공지사항</a>
-          <span>카페 규칙(필독)</span>
-        </section>
-        <section class="cafe-menu-group">
-          <h2>※ 관리 / 치료 정보공유</h2>
-          <a href="?board=%ED%9B%84%EA%B8%B0#latest">치료/관리 후기</a>
-          <span>건강 관리 정보</span>
-          <span>생활 습관 기록</span>
-        </section>
-        <section class="cafe-menu-group">
-          <h2>※ 커뮤니티</h2>
-          <a href="?board=%EC%9E%90%EC%9C%A0%EA%B2%8C%EC%8B%9C%ED%8C%90#latest">자유 게시판</a>
-          <span>질문 &amp; 답변</span>
-          <span>건강 관리 TIP</span>
-        </section>
-        <section class="cafe-menu-group">
-          <h2>※ 자료실</h2>
-          <span>논문 요약 자료</span>
-          <span>전문가 칼럼 및 뉴스</span>
-        </section>
       </nav>
       <details class="cafe-more"><summary aria-label="카페 메뉴 더보기">메뉴 더보기</summary><a href="?#top">카페 홈</a></details>
     </aside>
     <main class="cafe-home" id="home">
       <nav class="mobile-home-nav" aria-label="카페 게시판">
-        <a href="index.html" data-board="">홈</a>
-        <a href="?board=%EC%A0%84%EC%B2%B4%EA%B8%80#latest" data-board="전체글">전체글</a>
-        <a href="?board=%EC%9D%B8%EA%B8%B0%EA%B8%80#latest" data-board="인기글">인기글</a>
-        <a href="?board=%EA%B3%B5%EC%A7%80#latest" data-board="공지">공지사항</a>
-        <a href="?board=%EC%9E%90%EC%9C%A0%EA%B2%8C%EC%8B%9C%ED%8C%90#latest" data-board="자유게시판">자유 게시판</a>
+        <a href="?board=인기글#latest" data-board="인기글">인기글</a>
+        <a href="?board=전체글#latest" data-board="전체글">전체</a>
+        <a href="?board=공지#latest" data-board="공지">공지</a>
       </nav>
       <section class="cafe-intro" aria-labelledby="home-title">
         <img src="assets/images/reflux-notebook-profile.png" width="82" height="82" alt="">
@@ -106,7 +83,7 @@
 <noscript><p>게시글 목록을 보려면 JavaScript를 켜 주세요.</p></noscript>
 <script src="blog-data.js?v=20261118-product-card"></script>
 <script src="js/blog-core.js?v=20261118-clean"></script>
-<script src="js/cafe-home.js?v=2"></script>
+<script src="js/cafe-home.js?v=3"></script>
 <dialog class="cafe-mobile-drawer" id="cafe-mobile-drawer" aria-labelledby="cafe-mobile-drawer-title">
   <div class="cafe-mobile-drawer-heading">
     <h2 id="cafe-mobile-drawer-title">게시판 메뉴</h2>
@@ -114,6 +91,6 @@
   </div>
   <div class="cafe-mobile-drawer-links"></div>
 </dialog>
-<script src="js/cafe-mobile.js"></script>
+<script src="js/cafe-mobile.js?v=2"></script>
 </body>
 </html>
