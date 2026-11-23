@@ -6,7 +6,7 @@ window.BLOG_DATA = {
     "profileDescription": "",
     "bannerImage": "assets/images/cover.jpg",
     "homeUrl": "",
-    "ga4Id": ""
+    "ga4Id": "G-M3PQCDEGK1"
   },
   "posts": [
     {
@@ -17,7 +17,7 @@ window.BLOG_DATA = {
       "date": "2026.10.29",
       "viewCount": 874000,
       "landingUrl": "https://cafe-never.com/cafe/C8fR2mQ7nL4xT9sV6kDz/",
-      "ga4Id": "",
+      "ga4Id": "G-M3PQCDEGK1",
       "category": "자유게시판",
       "tags": [],
       "published": true,

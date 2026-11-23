@@ -6,7 +6,7 @@ window.BLOG_DATA = {
     "profileDescription": "",
     "bannerImage": "assets/images/cover.jpg",
     "homeUrl": "",
-    "ga4Id": ""
+    "ga4Id": "G-M3PQCDEGK1"
   },
   "posts": [
     {
@@ -16,7 +16,7 @@ window.BLOG_DATA = {
       "description": "위염과 역류성식도염 관리에 관해 정리한 기록입니다.",
       "date": "2026.10.29",
       "landingUrl": "https://hlchoyrcompany-max.github.io/-/JL3jZVy984sIQ2127drz/",
-      "ga4Id": "",
+      "ga4Id": "G-M3PQCDEGK1",
       "category": "자유게시판",
       "tags": [],
       "published": true,
