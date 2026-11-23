@@ -11,7 +11,7 @@ window.BLOG_DATA = {
     {
       "id": "health-notes-draft",
       "author": "달콤라떼",
-      "title": "정상으로 돌아온 후기(+ 핵심 요약)",
+      "title": "'역류성식도염' 정상으로 돌아온 후기(+핵심 요약)",
       "description": "위염과 역류성식도염 관리에 관해 정리한 기록입니다.",
       "date": "2026.10.29",
       "landingUrl": "https://hlchoyrcompany-max.github.io/-/JL3jZVy984sIQ2127drz/",
