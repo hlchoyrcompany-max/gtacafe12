@@ -5,7 +5,8 @@ window.BLOG_DATA = {
     "author": "달콤라떼",
     "profileDescription": "",
     "bannerImage": "assets/images/cover.jpg",
-    "homeUrl": ""
+    "homeUrl": "",
+    "ga4Id": ""
   },
   "posts": [
     {

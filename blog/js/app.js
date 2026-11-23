@@ -104,11 +104,10 @@
     window.addEventListener('message',e=>{if(!((parent!==window&&e.source===parent)||(window.opener&&e.source===window.opener))||e.origin!==location.origin||e.data?.type!=='landing-preview')return;render(e.data.config);});
     if(window.opener)window.opener.postMessage({type:'landing-preview-ready'},location.origin==='null'?'*':location.origin);
   }
-  // 선택 설정: 본인 GA4 ID를 넣은 경우에만 통계를 시작합니다.
-  const gaId=String(current.ga4Id||'').trim();
-  if(!preview&&/^G-[A-Z0-9]+$/.test(gaId)){
-    window.dataLayer=window.dataLayer||[];window.gtag=function(){dataLayer.push(arguments);};
-    window.gtag('js',new Date());window.gtag('config',gaId);
-    const script=document.createElement('script');script.async=true;script.src='https://www.googletagmanager.com/gtag/js?id='+encodeURIComponent(gaId);document.head.append(script);
-  }
+  // Shared analytics settings; a blank ID disables collection.
+  window.ARTICLE_ANALYTICS={
+    measurementId:window.BLOG_DATA?.site?.ga4Id||current.ga4Id||'',
+    postId:post?.id||'',
+    pageType:'blog'
+  };
 })();
